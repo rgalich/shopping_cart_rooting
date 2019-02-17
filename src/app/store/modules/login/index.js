@@ -12,7 +12,7 @@ const mutations = {
 
 const actions = {
     login({ commit }) {
-        return axios.get('/api/login').then(response => {
+        return axios.post('/api/login').then(response => {
             localStorage.setItem('token', response.data.token);
             commit('SET_TOKEN', response.data.token);
         })
