@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="navigation-buttons">
+    <div v-if="$route.path !== '/login'" class="navigation-buttons">
       <button @click="logout" class="button is-text is-pulled-left">Logout</button>
       <div class="is-pulled-right">
         <router-link to="/products" class="button">
