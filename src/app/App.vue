@@ -50,6 +50,7 @@ export default {
       this.$store.dispatch('logout').then(() => {
         this.$router.push('/login');
       }).catch(error => {
+        // eslint-disable-next-line
         console.log(error);
       });
     },
