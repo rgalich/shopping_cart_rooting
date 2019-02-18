@@ -28,14 +28,21 @@ export default {
   name: 'App',
   computed: {
     ...mapGetters([
+      'token',
       'cartQuantity'
     ])
   },
   created() {
     const token = localStorage.getItem('token');
     if (token) {
-      this.$store.dispatch('getCartItems', token);
-      this.$store.dispatch('getProductItems', token);
+      this.updateInitialState(token);
+    }
+  },
+  watch: {
+    token() {
+      if (this.token) {
+        this.updateInitialState(this.token);
+      }
     }
   },
   methods: {
@@ -45,6 +52,10 @@ export default {
       }).catch(error => {
         console.log(error);
       });
+    },
+    updateInitialState(token) {
+      this.$store.dispatch('getCartItems', token);
+      this.$store.dispatch('getProductItems', token);
     }
   }
 }
